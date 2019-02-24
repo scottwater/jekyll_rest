@@ -1,7 +1,7 @@
 require "base64"
 
 class RequestToPost
-  attr_reader :file_path, :body, ::properties, :valid, :content, :content_encoded
+  attr_reader :file_path, :body, :properties, :valid, :content, :content_encoded
 
   def initialize(params)
     if params["body"]
