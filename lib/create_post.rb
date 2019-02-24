@@ -60,7 +60,7 @@ class CreatePost
   def send_to_github(request_path, data)
     HTTP
       .headers({
-        "Authorization" => "token #{ENV["GITHUB_KEY"]}",
+        "Authorization" => "token #{ENV["GITHUB_API_KEY"]}",
         "Accept" => "application/vnd.github.v3+json",
         "User-Agent" => "Static Blog Thing via ScottWater",
       })
