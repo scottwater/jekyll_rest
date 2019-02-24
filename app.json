@@ -11,7 +11,7 @@
       "generator": "secret"
     },
     "GITHUB_API_KEY": {
-      "description": "Needed to authenticate with Github. See Settings > Developer Settings",
+      "description": "Needed to authenticate with Github. See Settings > Developer Settings"
     },
     "GITHUB_REPO": {
       "description": "The repo you want to post to"
