@@ -1,0 +1,23 @@
+{
+  "name": "Jekyll Rest",
+  "description": "A simple ruby URL shortener and click counter",
+  "repository": "https://github.com/scottwater/jekyll_rest",
+  "keywords": ["ruby", "jekyll", "email", "netlify"],
+  "website": "https://scottw.com/jekyll-rest",
+  "success_url": "/",
+  "env": {
+    "API_KEY": {
+      "description": "a secret key used to access the api",
+      "generator": "secret"
+    },
+    "GITHUB_API_KEY": {
+      "description": "Needed to authenticate with Github. See Settings > Developer Settings",
+    },
+    "GITHUB_REPO": {
+      "description": "The repo you want to post to"
+    },
+    "GITHUB_USER": {
+      "description": "The Github User (or organzation) account"
+    }
+  }
+}
