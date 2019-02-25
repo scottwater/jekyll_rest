@@ -19,10 +19,10 @@ class RequestToPost
   private
 
   def proccess_params(params)
-    front_matter = FrontMatter.new(params["body"])
+    front_matter = FrontMatter.new(params.delete("body"))
     @body = front_matter.body
     @properties = front_matter.properties
-    @properties["title"] ||= params["title"] || params["subject"]
+    @properties["title"] ||= params.delete("title") || params.delete("subject")
     if @properties["date"]
       # need to understand why Yaml is adding .000000000 to the date
       @properties["date"] = Time.parse(@properties["date"].to_s).to_s
@@ -38,9 +38,14 @@ class RequestToPost
       @properties["date"] ||= Time.now.to_s
       @file_path = Slug.new(@properties["date"], @properties["title"]).to_slug
 
-      if @properties["link_url"]
+      if @properties["link_url"] && @properties["shorten_url"].nil?
         @properties["shorten_url"] = shorten_url(@properties["link_url"])
       end
+
+      params.each do |key,value|
+        @properties[key] = value
+      end
+
 
       # trying to correct for OS X \r\n
       @body = @body.delete("\r").gsub(/\n{2,}/, "\n\n")
