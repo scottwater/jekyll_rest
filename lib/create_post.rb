@@ -62,7 +62,7 @@ class CreatePost
       .headers({
         "Authorization" => "token #{ENV["GITHUB_API_KEY"]}",
         "Accept" => "application/vnd.github.v3+json",
-        "User-Agent" => "Static Blog Thing via ScottWater",
+        "User-Agent" => "Jekyll Rest",
       })
       .put(request_path, body: data.to_json)
       .tap do |resp|
