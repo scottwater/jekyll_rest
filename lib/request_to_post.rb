@@ -38,10 +38,6 @@ class RequestToPost
       @properties["date"] ||= Time.now.to_s
       @file_path = Slug.new(@properties["date"], @properties["title"]).to_slug
 
-      if @properties["link_url"] && @properties["shorten_url"].nil?
-        @properties["shorten_url"] = shorten_url(@properties["link_url"])
-      end
-
       params.each do |key,value|
         @properties[key] = value
       end
@@ -89,7 +85,4 @@ class RequestToPost
     @valid = (!blank?(@body) && !blank?(properties["title"]))
   end
 
-  def shorten_url(url)
-    ShortenUrl.create(url)
-  end
 end
