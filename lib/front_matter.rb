@@ -5,13 +5,12 @@ class FrontMatter
 
   def initialize(text)
     @body = text
-    @properties = {}
     parse
   end
 
   def parse
     @body =~ /^(---\s*\n.*?\n?)^(---\s*$\n?)/m
-    @properties = YAML.load($1) if $1
+    @properties = $1 ? YAML.load($1) : {}
     @body = $' if $1
   end
 end
