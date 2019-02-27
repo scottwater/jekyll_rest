@@ -8,6 +8,8 @@ class FrontMatter
     parse
   end
 
+  private
+
   def parse
     @body =~ /^(---\s*\n.*?\n?)^(---\s*$\n?)/m
     @properties = $1 ? YAML.load($1) : {}
