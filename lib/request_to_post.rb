@@ -44,12 +44,12 @@ class RequestToPost
 
 
       # trying to correct for OS X \r\n
-      @body = @body.delete("\r").gsub(/\n{2,}/, "\n\n")
+      @body = @body.delete("\r").gsub(/\n{2,}/, "\n\n").strip
 
       @content = <<~CONTENT
         #{@properties.keep_if {|key, value| value && value.to_s != ""}.to_yaml.strip}
         ---
-         #{@body}
+        #{@body}
       CONTENT
 
       @content_encoded = Base64.encode64(@content)
