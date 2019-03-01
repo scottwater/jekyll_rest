@@ -10,7 +10,7 @@
       "description": "a secret key used to access the api",
       "generator": "secret"
     },
-    "GITHUB_API_KEY": {
+    "GITHUB_TOKEN": {
       "description": "Needed to authenticate with Github. See Settings > Developer Settings"
     },
     "GITHUB_REPO": {
