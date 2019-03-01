@@ -5,6 +5,7 @@ describe CreatePost do
     before(:all) do
       ENV["GITHUB_USER"] = "scottwater"
       ENV["GITHUB_REPO"] = "not_my_blog"
+      ENV["GITHUB_TOKEN"] = "abc"
     end
 
     it "will create a new post" do

@@ -10,7 +10,10 @@ class CreatePost
     branch = params.delete("branch") || ENV["GITHUB_BRANCH"] || "master"
     user = params.delete("user") || ENV["GITHUB_USER"]
 
-    if valid?(user, repo)
+    token = params.delete("github_token") || ENV["GITHUB_TOKEN"]
+
+
+    if valid?(user, repo, token)
       r2p = RequestToPost.new(params)
 
       @content = r2p.content
@@ -22,7 +25,7 @@ class CreatePost
       }
 
       request_path = generate_request_path(user, repo, directory, r2p.file_path)
-      @response = send_to_github(request_path, data)
+      @response = send_to_github(request_path, data, token)
     end
   end
 
@@ -39,8 +42,8 @@ class CreatePost
 
   private
 
-  def valid?(user, repo)
-    (user && repo).tap do |valid|
+  def valid?(user, repo, token)
+    (user && repo && token).tap do |valid|
       unless valid
         @status = 409
       end
@@ -59,10 +62,10 @@ class CreatePost
     end
   end
 
-  def send_to_github(request_path, data)
+  def send_to_github(request_path, data, token)
     HTTP
       .headers({
-        "Authorization" => "token #{ENV["GITHUB_API_KEY"]}",
+        "Authorization" => "token #{token}",
         "Accept" => "application/vnd.github.v3+json",
         "User-Agent" => "Jekyll Rest",
       })

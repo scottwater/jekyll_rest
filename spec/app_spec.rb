@@ -17,6 +17,7 @@ describe App do
 
     before do
       ENV["API_KEY"] = "1234"
+      ENV["GITHUB_TOKEN"] = "1234"
       stub_request(:put, "https://api.github.com/repos/bob/blog/contents/_posts/#{Date.today}-title.md").to_return(status: 201)
     end
 
