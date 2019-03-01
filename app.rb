@@ -1,8 +1,10 @@
 require "roda"
 
 class App < Roda
+  plugin :json_parser
+
   def is_authorized?(api_key)
-    !api_key.nil? && ENV["API_KEY"] == api_key
+    !api_key.nil? && !api_key.empty? && ENV["API_KEY"] == api_key
   end
 
   route do |r|

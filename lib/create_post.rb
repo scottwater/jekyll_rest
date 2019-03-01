@@ -2,7 +2,7 @@ require "http"
 require "json"
 
 class CreatePost
-  attr_reader :response, :status
+  attr_reader :response, :status, :content
 
   def initialize(params)
     directory = params.delete("directory") || ENV["BLOG_DIRECTORY"]
@@ -12,6 +12,8 @@ class CreatePost
 
     if valid?(user, repo)
       r2p = RequestToPost.new(params)
+
+      @content = r2p.content
 
       data = {
         branch: branch || ENV["BRANCH"] || "master",
@@ -26,7 +28,7 @@ class CreatePost
 
   def message
     case status
-    when 201 then "Post Created"
+    when 201 then content
     when 401 then "Invalid Github Credentials"
     when 409 then "Missing User or Repo"
     when 422 then "Duplicate Post. New Post Failed"

@@ -20,6 +20,8 @@ GEM
     http_parser.rb (0.6.0)
     public_suffix (3.0.3)
     rack (2.0.6)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     roda (3.17.0)
       rack
     rspec (3.8.0)
@@ -49,6 +51,7 @@ PLATFORMS
 
 DEPENDENCIES
   http
+  rack-test
   roda
   rspec
   webmock
