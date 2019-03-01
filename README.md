@@ -29,8 +29,6 @@ The following environment variables are available:
 * GITHUB\_API\_KEY - This is the API Key used to authenticate with Github. You can create one on Github with Settings > Developer Settings
 * GITHUB\_REPO - What repo do you want to post to.
 * GITHUB\_USER - The Github user account (could also be an organization)
-* SHORTI\_URL - (optional) - will allow link\_url's found in front matter to be shortened.
-* SHORTI\_API\_KEY - (optional) - API Key for Shorti if used.
 
 ## API
 
