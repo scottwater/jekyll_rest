@@ -4,8 +4,8 @@ class Slug
 
   attr_reader :date, :title
 
-  def initialize(date, title)
-    @date = if date.is_a?(String)
+  def initialize(title, date = nil)
+    @date = if date&.is_a?(String)
       Date.parse(date)
     else
       date

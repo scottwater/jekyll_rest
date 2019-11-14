@@ -36,7 +36,7 @@ class RequestToPost
 
     if valid?
       @properties["date"] ||= Time.now.to_s
-      @file_path = Slug.new(@properties["date"], @properties["title"]).to_slug
+      @file_path = Slug.new(@properties["title"], @properties["date"]).to_slug
 
       params.each do |key, value|
         @properties[key] = value
