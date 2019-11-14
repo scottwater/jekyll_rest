@@ -63,11 +63,10 @@ describe RequestToPost do
     expect(r2p.file_path).to eql("_posts/2019-02-22-file-path.md")
   end
 
-  it "will add used params to the front matter" do 
+  it "will add used params to the front matter" do
     rp = RequestToPost.new("body" => "Body", "title" => "Title", "permalink" => "/hey-now")
 
     fm = FrontMatter.new(rp.content)
     expect(fm.properties["permalink"]).to eql("/hey-now")
-
   end
 end

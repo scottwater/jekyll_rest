@@ -6,9 +6,9 @@ describe FrontMatter do
     expect(front_matter.body).to eql("BODY")
   end
 
-  it "will have an no properties without a FrontMatter" do 
+  it "will have an no properties without a FrontMatter" do
     front_matter = FrontMatter.new("BODY")
-    expect(front_matter.properties).to be_empty 
+    expect(front_matter.properties).to be_empty
   end
 
   it "will find some front matter" do

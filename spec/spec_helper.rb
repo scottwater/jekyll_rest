@@ -1,5 +1,5 @@
 require "rspec"
-require 'rack/test'
+require "rack/test"
 require "webmock/rspec"
 require "./environment.rb"
 

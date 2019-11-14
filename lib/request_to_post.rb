@@ -7,8 +7,8 @@ class RequestToPost
     if params["body"]
       proccess_params(params)
     else
-      @valid = false 
-    end 
+      @valid = false
+    end
   end
 
   def valid?
@@ -38,16 +38,15 @@ class RequestToPost
       @properties["date"] ||= Time.now.to_s
       @file_path = Slug.new(@properties["date"], @properties["title"]).to_slug
 
-      params.each do |key,value|
+      params.each do |key, value|
         @properties[key] = value
       end
-
 
       # trying to correct for OS X \r\n
       @body = @body.delete("\r").gsub(/\n{2,}/, "\n\n").strip
 
       @content = <<~CONTENT
-        #{@properties.keep_if {|key, value| value && value.to_s != ""}.to_yaml.strip}
+        #{@properties.keep_if { |key, value| value && value.to_s != "" }.to_yaml.strip}
         ---
         #{@body}
       CONTENT
@@ -63,7 +62,7 @@ class RequestToPost
   # And just because I am asking for trouble, remove the . if the title
   # ends with one
   def generate_title_from_body
-    body_parts = body.split("\n").delete_if {|part| part.empty?}
+    body_parts = body.split("\n").delete_if { |part| part.empty? }
     if body_parts.length > 1
       @properties["title"] = body_parts[0].strip
       @body = body_parts[1..-1].join("\n\n")
@@ -84,5 +83,4 @@ class RequestToPost
   def validate
     @valid = (!blank?(@body) && !blank?(properties["title"]))
   end
-
 end

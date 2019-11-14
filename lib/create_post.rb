@@ -12,7 +12,6 @@ class CreatePost
 
     token = params.delete("github_token") || ENV["GITHUB_TOKEN"]
 
-
     if valid?(user, repo, token)
       r2p = RequestToPost.new(params)
 
@@ -71,7 +70,7 @@ class CreatePost
       })
       .put(request_path, body: data.to_json)
       .tap do |resp|
-        @status = resp.status
+      @status = resp.status
     end
   end
 end

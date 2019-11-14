@@ -19,8 +19,8 @@ class Slug
       .downcase
       .gsub(/[\W_]/, " ")
       .split(" ")
-      .select {|s| s unless s.empty?}
-      .collect {|s| s unless STOP_WORDS.include?(s)}
+      .select { |s| s unless s.empty? }
+      .collect { |s| s unless STOP_WORDS.include?(s) }
       .join(" ")
       .strip
     "_posts/#{@date.to_date}-#{slug.gsub(/ +/, "-")}.md"
