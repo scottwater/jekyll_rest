@@ -3,7 +3,7 @@
   "description": "A simple ruby URL shortener and click counter",
   "repository": "https://github.com/scottwater/jekyll_rest",
   "keywords": ["ruby", "jekyll", "email", "netlify"],
-  "website": "https://scottw.com/jekyll-rest",
+  "website": "https://scottw.com/blog/jekyll-rest",
   "success_url": "/",
   "env": {
     "API_KEY": {
@@ -17,7 +17,7 @@
       "description": "The repo you want to post to"
     },
     "GITHUB_USER": {
-      "description": "The Github User (or organzation) account"
+      "description": "The Github User (or organization) account"
     }
   }
 }
